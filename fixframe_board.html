@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- 2021.02.07 AWS Lambda API Gateway DynamoDB 활용 Web 게시판 만들기  -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>fixframe Board</title>
+    </head>
+    <body onLoad="get()">
+        <div id="articles">
+            hellow
+        </div>
+        <script>
+            /* HTML노드 추가 함수 */
+            function createNode(element){
+                return document.createElement(element);
+            }
+            /* HTML노드에 child 추가 함수 */
+            function append(parent, el){
+                return parent.appendChild(el);
+            }
+ 
+            var elem = document.getElementById('articles');
+            /* API 게이트웨이로 게시글 정보 가져오는 함수 */ 
+            const URL = "https://jweltgqrq0.execute-api.ap-northeast-2.amazonaws.com/fixframe_board_function/article_resource";
+            function get(){
+                fetch(URL, {
+                    method: "GET",
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(resp => resp.json())
+                .then(function(data){
+                    let article_arr = data.Items;
+                    return article_arr.map(function(article_indiv){
+                        let li = createNode('li'); 
+                        let span = createNode('span');
+                        
+                        span.innerHTML = article_indiv.title +" - " + article_indiv.content;
+
+                      append(li, span);
+                      append(elem, li);
+ 
+                    })
+                })
+                .catch(err => console.log(err))
+            }
+        </script>
+    </body>
+</html>
