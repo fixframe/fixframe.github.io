@@ -19,7 +19,7 @@
                 return parent.appendChild(el);
             }
  
-            var elem = document.getElementById('articles');
+            var elem = document.getElementById('article_resource');
             /* API 게이트웨이로 게시글 정보 가져오는 함수 */ 
             const URL = "https://jweltgqrq0.execute-api.ap-northeast-2.amazonaws.com/fixframe_board_function/article_resource";
             function get(){
@@ -35,7 +35,7 @@
                         let li = createNode('li'); 
                         let span = createNode('span');
                         
-                        span.innerHTML = article_indiv.title +" - " + article_indiv.content;
+                        span.innerHTML = article_indiv.title +" _ " + article_indiv.content;
 
                       append(li, span);
                       append(elem, li);
