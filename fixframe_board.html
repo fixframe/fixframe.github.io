@@ -21,7 +21,7 @@
  
             var elem = document.getElementById('article_resource');
             /* API 게이트웨이로 게시글 정보 가져오는 함수 */ 
-            const URL = "https://eueggxcti2.execute-api.ap-northeast-2.amazonaws.com/fixframe_board_function/fixframe_board_function";
+            const URL = "https://eueggxcti2.execute-api.ap-northeast-2.amazonaws.com/fixframe_board_function/article_resource";
             function get(){
                 fetch(URL, {
                     method: "GET",
@@ -35,7 +35,7 @@
                         let li = createNode('li'); 
                         let span = createNode('span');
                         
-                        span.innerHTML = article_indiv.title +" _ " + article_indiv.content;
+                        span.innerHTML = article_indiv.title +" - " + article_indiv.content;
 
                       append(li, span);
                       append(elem, li);
