@@ -85,7 +85,7 @@ AWS.config.update({
           upload_to_db(img_location);
    
           return alert("Successfully uploaded photo.");
-          window.location = '../index.html';
+          window.location = 'index.html';
           },
           function(err) {
               console.log(err);
