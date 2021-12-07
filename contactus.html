@@ -389,14 +389,20 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                                         <!--<input type="text" id="content" required>-->
                                         <textarea name="message" id="content" class="input-lg round form-control" style="height: 130px;" placeholder="Enter your message"></textarea>
                                     </div>
+
+                                    <!-- file -->
+                                    <div class="form-group">
+                                        <label for="file">Filename</label>
+                                        <!--<input type="text" id="content" required>-->
+                                        <input type="file" name="filename" id="article_image" class="input-lg round form-control" placeholder="Enter your email" pattern=".{5,100}" required aria-required="true">
+                                    </div>
                                     
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <!-- Inform Tip -->
                                             <div class="form-tip pt-20 pt-sm-0 mb-sm-20">
                                                 All the fields are required
-                                                <label for="file">file</label>
-                                                <input type="file" id="article_image" name="filename">
+
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
