@@ -84,8 +84,8 @@ AWS.config.update({
           
           upload_to_db(img_location);
    
-          return alert("Successfully uploaded photo.");
-          window.location = "https://fixframe.co.kr/index.html";
+          return alert("Successfully uploaded photo.");;
+          window.location.href = "index.html";
           },
           function(err) {
               console.log(err);
