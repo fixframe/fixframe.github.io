@@ -1,0 +1,36 @@
+Outputs:
+  region:
+    Value:
+      Ref: "AWS::Region"
+  CognitoARN:
+    Value:
+      Fn::GetAtt: ["userPool", "Arn"]
+  userPoolId:
+    Value:
+      Ref: userPool
+  userPoolWebClientId:
+    Value:
+      Ref: userPoolClient
+
+  identityPoolId:
+    Value:
+      Ref: identityPool
+
+  GraphQLUrl:
+    Value:
+      Fn::GetAtt: ["graphQLApi", "GraphQLUrl"]
+  GraphQLARN:
+    Value:
+      Fn::GetAtt: ["graphQLApi", "Arn"]
+  GraphQLApiId:
+    Value:
+      Fn::GetAtt: ["graphQLApi", "ApiId"]
+  BucketName:
+    Value: ${file(../slscms-config.yml):bucket_name}-staging
+  WebsiteURLStaging:
+    Value:
+      Fn::GetAtt: ["S3BucketStaging", "WebsiteURL"]
+  WebsiteURLProduction:
+    Value:
+      Fn::GetAtt: ["S3BucketProduction", "WebsiteURL"]
+    

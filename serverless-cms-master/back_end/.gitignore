@@ -1,0 +1,19 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# Webpack directories
+.webpack
+
+package-lock.json
+
+user-data.yml
+stack.yml
+
+admin/src/cognito.js
+admin/src/aws-stack-vars.js
+admin/src/AppSync.js
+.DS_Store

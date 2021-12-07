@@ -1,0 +1,5 @@
+Type: "AWS::AppSync::GraphQLSchema"
+Properties:
+  Definition: ${file(./scripts/graphql/transformSchema.js)}
+  ApiId:
+    Fn::GetAtt: ["graphQLApi", "ApiId"]

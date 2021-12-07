@@ -1,0 +1,32 @@
+Resources:
+  # Staging bucket
+  S3BucketStaging: ${file(./resources/s3/s3bucketStaging.yml)}
+  S3BucketPolicyStaging: ${file(./resources/s3/s3bucketPolicyStaging.yml)}
+
+  # Production bucket
+  S3BucketProduction: ${file(./resources/s3/s3bucketProduction.yml)}
+  S3BucketPolicyProduction: ${file(./resources/s3/s3bucketPolicyProduction.yml)}
+
+  ResizeLambdaPermissionPhotosS3: ${file(./resources/s3/s3permission.yml)}
+  updateDbRole: ${file(./resources/roles/updateDbRole.yml)}
+  dataEditorRole: ${file(./resources/roles/dataEditorRole.yml)}
+  identityPoolRoleAttachment:  ${file(./resources/auth/identity-pool-role-attachment.yml)}
+  fragmentsTable: ${file(./resources/tables.yml):fragmentsTable}
+  genericFunctionRole:  ${file(./resources/roles/genericFunctionRole.yml)}
+
+  userPool:  ${file(./resources/auth/user-pool.yml)}
+  userPoolGroup: ${file(./resources/auth/user-pool-group.yml)}
+  userPoolClient: ${file(./resources/auth/user-pool-client.yml)}
+
+  identityPool:  ${file(./resources/auth/identity-pool.yml)}
+
+  graphQLApi: ${file(./resources/graphql-api/graphql.yml)}
+  graphQLSchema: ${file(./resources/graphql-api/graphql-schema.yml)}
+  graphQLData: ${file(./resources/graphql-api/graphql-datasource.yml)}
+  graphQLLambda: ${file(./resources/graphql-api/graphql-datasource-lambda.yml)}
+
+
+  deleteFragment: ${file(./resources/graphql-api/resolvers/deleteFragment.yml)}
+  permanentlyDeleteFragments: ${file(./resources/graphql-api/resolvers/permanentlyDeleteFragments.yml)}
+  recoverFragment: ${file(./resources/graphql-api/resolvers/recoverFragment.yml)}
+
