@@ -71,7 +71,81 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/animate.min.css">
         <link rel="stylesheet" href="css/splitting.css">
-        
+
+        <!-- aws 이미지 업로드 Contact us 적용 파일-->
+        <!--켜지면 get() 함수를 실행함.  -->
+                    <body onLoad="get()">
+                        <div id="articles">
+                    
+                        </div>
+         
+                <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+                <script src="./js/s3_photoExample_copy.js"></script>
+                
+                <script>
+                    /* HTML노드 추가 함수 */
+                    function createNode(element){
+                        return document.createElement(element);
+                    }
+                    /* HTML노드에 자녀 추가 함수 */
+                    function append(parent, el){
+                        return parent.appendChild(el);
+                    }
+                    /* CSS 속성 추가 함수 */
+                    function addStyle(styles) { 
+                      
+                      /* Create style element */ 
+                      var css = document.createElement('style'); 
+                      css.type = 'text/css'; 
+                 
+                      if (css.styleSheet)  
+                          css.styleSheet.cssText += styles; 
+                      else  
+                          css.appendChild(document.createTextNode(styles)); 
+                        
+                      /* Append style to the head element */ 
+                      document.getElementsByTagName("head")[0].appendChild(css); 
+                  }
+                  var elem = document.getElementById('articles');
+                    /* API 게이트웨이로 매물리스트 정보 가져오는 함수 */ 
+                    const URL = "https://iubccppr7d.execute-api.ap-northeast-2.amazonaws.com/simple_board/article-resource";
+                    function get(){
+                        fetch(URL, {
+                            method: "GET",
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        }).then(resp => resp.json())
+                        .then(function(data){
+                            let article_arr = data.Items;
+                            console.log(data.Items);
+                            return article_arr.map(function(article_indiv){
+                                let li = createNode('li');
+                                let img = createNode('img');
+                                let span = createNode('span');
+                                
+                                // console.log(article_indiv.img_source);
+                                img.src = article_indiv.img_source;
+                                span.innerHTML = article_indiv.title +" - " + article_indiv.content;
+         
+                                append(li,img);
+                                append(li,span);
+                                append(elem,li);
+         
+                                var styles = 'div#articles > li > img { width:200px; height:100px }';
+                                addStyle(styles);
+         
+                            })
+                        })
+                        .catch(err => console.log(err))
+                    }
+                    
+                    function submitToAPI(e){
+                        e.preventDefault();
+                        add_article_with_photo('images');
+                     }
+                </script>
+
     </head>
     <body class="appear-animate">
         
