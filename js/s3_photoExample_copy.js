@@ -17,7 +17,7 @@ AWS.config.update({
   });
    
   var s3 = new AWS.S3({
-    apiVersion: "2006-03-01",
+    apiVersion: "2021-12-17",
     params: { Bucket: albumBucketName }
   });
    
@@ -54,7 +54,7 @@ AWS.config.update({
   function add_article_with_photo(albumName) {
       var files = document.getElementById("article_image").files;
       if (!files.length) {
-          return alert("Please choose a file to upload first.");
+          return alert("관련 자료나 회사 소개서를 업로드 해주세요.");
       }
       var file = files[0];
       var fileName = file.name;
@@ -84,12 +84,12 @@ AWS.config.update({
           
           upload_to_db(img_location);
    
-          return alert("Successfully uploaded photo.", window.location.href = "index.html");;
+          return alert("등록이 완료 되었습니다. 빠른 답변 드리도록 하겠습니다.", window.location.href = "index.html");;
           
           },
           function(err) {
               console.log(err);
-          return alert("There was an error uploading your photo: ", err.message);
+          return alert("관련 자료나 회사소개서 업로드시 문제가 발생 하였습니다. 다시 한번 진행 해주세요.: ", err.message);
           }
       );
       }
