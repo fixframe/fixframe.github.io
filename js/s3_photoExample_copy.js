@@ -49,7 +49,8 @@ AWS.config.update({
       }).then(resp => console.log(resp))
           .catch(err => console.log(err))
   }
-   
+
+     
   function add_article_with_photo(albumName) {
       var files = document.getElementById("article_image").files;
       if (!files.length) {
@@ -64,8 +65,8 @@ AWS.config.update({
    
       // Use S3 ManagedUpload class as it supports multipart uploads
       var upload = new AWS.S3.ManagedUpload({
-          params: {
-          Bucket: albumBucketName,
+         params: {
+         Bucket: albumBucketName,
           Key: photoKey,
           Body: file
           }
